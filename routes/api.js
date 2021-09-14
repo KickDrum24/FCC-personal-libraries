@@ -1,5 +1,4 @@
 
-
 'use strict';
 const mongoose = require("mongoose");
 const bookModel = require("../model.js").Book;
@@ -46,8 +45,6 @@ module.exports = function (app) {
           res.json(newBook)
         }
       })
-
-
     })
 
     .delete(function (req, res) {
@@ -58,8 +55,6 @@ module.exports = function (app) {
       })
     });
 
-
-
   app.route('/api/books/:id')
     // You can send a GET request to /api/books/{_id} to retrieve a single object of a book containing 
     // the properties title, _id, and a comments array (empty array if no comments present). 
@@ -69,9 +64,7 @@ module.exports = function (app) {
       let bookid = req.params.id;
       bookModel.findById(bookid, (err, book) => {
         !book ? res.send("no book exists") : res.json(book)
-
       })
-      //json res format: {"_id": bookid, "title": book_title, "comments": [comment,comment,...]}
     })
 
     // You can send a POST request containing comment as the form body data to /api/books/{_id} to add a comment 
@@ -95,11 +88,8 @@ module.exports = function (app) {
           res.send('no book exists')
           return;
         }
-        console.log(book)
-
         res.json(book)
       });
-      //json res format same as .get
     })
 
     .delete(function (req, res) {
@@ -112,12 +102,10 @@ module.exports = function (app) {
         if (err) {
           console.log(err); return
         }
-        if (!result) { 
-          res.send("no book exists") 
-        } else { 
-          // () => { result.remove(); res.json('delete succesful') } 
-          console.log(result)
-          res.send('delete successful') 
+        if (!result) {
+          res.send("no book exists")
+        } else {
+          res.send('delete successful')
         }
       })
     });

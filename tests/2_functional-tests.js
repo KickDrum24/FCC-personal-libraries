@@ -37,7 +37,6 @@ suite('Functional Tests', function () {
 
   suite('Routing tests', function () {
 
-
     suite('POST /api/books with title => create book object/expect book object', function () {
 
       test('Test POST /api/books with title', function (done) {
@@ -64,9 +63,7 @@ suite('Functional Tests', function () {
             done();
           })
       });
-
     });
-
 
     suite('GET /api/books => array of books', function () {
 
@@ -80,7 +77,6 @@ suite('Functional Tests', function () {
             done();
           })
       });
-
     });
 
     suite('GET /api/books/:id => book object with [id]', function () {
@@ -106,9 +102,7 @@ suite('Functional Tests', function () {
             done();
           })
       });
-
     });
-
 
     suite('POST /api/books/[id] => add comment/expect book object with id', function () {
 
@@ -147,7 +141,6 @@ suite('Functional Tests', function () {
             done();
           })
       });
-
     });
 
     suite('DELETE /api/books/[id] => delete book object id', function () {
@@ -156,7 +149,6 @@ suite('Functional Tests', function () {
         chai
           .request(server)
           .delete('/api/books/' + bookID)
-
           .end(function (err, res) {
             assert.equal(res.status, 200);
             assert.equal(res.text, 'delete successful')
@@ -174,9 +166,6 @@ suite('Functional Tests', function () {
             done();
           })
       });
-
     });
-
   });
-
 });
