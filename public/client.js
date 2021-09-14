@@ -39,6 +39,7 @@ $( document ).ready(function() {
       type: 'delete',
       success: function(data) {
         //update list
+        console.log('button fired')
         $('#detailComments').html('<p style="color: red;">'+data+'<p><p>Refresh the page</p>');
       }
     });
@@ -82,4 +83,14 @@ $( document ).ready(function() {
     });
   }); 
   
+});
+/*
+  *  For #sampleposting to update form action url to test inputs book id
+  */
+
+$(function() {
+  $('#commentTest').submit(function(){
+    let  id = $('#idinputtest').val();
+    $(this).attr('action', "/api/books/" + id);
+  });
 });

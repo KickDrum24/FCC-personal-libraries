@@ -1,15 +1,23 @@
 'use strict';
 
 const express     = require('express');
+const helmet = require('helmet');
 const bodyParser  = require('body-parser');
 const cors        = require('cors');
 require('dotenv').config();
+require("./db-connect.js");
 
 const apiRoutes         = require('./routes/api.js');
 const fccTestingRoutes  = require('./routes/fcctesting.js');
 const runner            = require('./test-runner');
 
-const app = express();
+let app = express();
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    scriptSrc: ["'self'", 'code.jquery.com']
+  }
+}));
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
